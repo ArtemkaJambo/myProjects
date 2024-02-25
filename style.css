@@ -30,7 +30,7 @@ body {
     color: black;
     font-family: "Nunito Sans", sans-serif;
 }
-#startBtn, #stopBtn, #clearBtn {
+#startBtn, #stopBtn, #clearBtn, #fiveMinutes, #tenMinutes, #stopFive {
     padding: 10px 20px;
     margin-right: 10px;
     border-radius: 10px;
@@ -44,6 +44,9 @@ body {
     display: flex;
     gap: 20px;
     font-size: 17px;
-    color: white;
+    color: black;
     font-family: "Nunito Sans", sans-serif;
+}
+.inputTime {
+    
 }
