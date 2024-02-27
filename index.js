@@ -28,8 +28,8 @@ function updateTimer() {
 }
 
 document.getElementById('startBtn').addEventListener('click', function() {
-    clearInterval(intervalTimer)
-    intervalTimer = setInterval(updateTimer, 1000)
+    // clearInterval(intervalTimer)
+    // intervalTimer = setInterval(updateTimer, 1000)
 
     if (!isTimerRunning && !activeStartbtn) {
       clearInterval(intervalTimer);
@@ -43,7 +43,9 @@ document.getElementById('stopBtn').addEventListener('click',function() {
 document.getElementById('clearBtn').addEventListener('click',function() {
   clearInterval(intervalTimer)
   hours = minutes = seconds = 0
-  document.getElementById('timer').textContent = '00:00:00'  
+  document.getElementById('timer').textContent = '00:00:00' 
+  isTimerRunning = false; // Добавляем эту строку для установки флага isTimerRunning в false
+  activeStartbtn = false; 
 })
 
 function reverseBtn() {
@@ -97,6 +99,12 @@ document.getElementById('startReverseBtn').addEventListener('click', function() 
 document.getElementById('reverseBtn').addEventListener('click',function() {
   document.getElementById('normalTimer').classList.add('hidden');
   document.getElementById('reverseTimer').classList.remove('hidden');
+  clearInterval(intervalTimer)
+  hours = minutes = seconds = 0
+  document.getElementById('timer').textContent = '00:00:00'  
+  isTimerRunning = false; // Добавляем эту строку для установки флага isTimerRunning в false
+  activeStartbtn = false;
+  
 })
 document.getElementById('backBtn').addEventListener('click',function() {
   document.getElementById('reverseTimer').classList.add('hidden');
