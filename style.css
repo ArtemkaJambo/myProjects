@@ -1,52 +1,64 @@
-body {
-    background-color: white;
-}
 * {
     margin: 0;
     padding: 0;
 }
-.header {
-    background-color: #0000FF;
-    height: 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 50px;
-    color: white;
+.text {
     font-family: "Nunito Sans", sans-serif;
+} 
 
-}
-.app {
+header {
+    background-color: blue;
+    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    margin-top: 200px;
+    font-size: 30px;
+    color: white;
+}
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;  
+}
+#startBtn, #stopBtn, #clearBtn, #reverseBtn, #startReverseBtn, #backBtn {
+  padding: 10px 20px;
+  background-color: blue;
+  border: 0;
+  border-radius: 10px;
+  margin-right: 10px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+}
+#reverseBtn {
+  margin-top: 15px;
 }
 #timer {
-    font-size: 60px;
-    /* margin-bottom: 20px; */
-    margin-top: 20px;
-    color: black;
-    font-family: "Nunito Sans", sans-serif;
+  margin-top: 15px;
+  font-size: 30px;
 }
-#startBtn, #stopBtn, #clearBtn, #fiveMinutes, #tenMinutes, #stopFive {
-    padding: 10px 20px;
-    margin-right: 10px;
-    border-radius: 10px;
-    background-color: blue;
-    border: 0;
-    font-size: 20px;
-    color: white;
-    cursor: pointer;
+#reverseTimer {
+  text-align: center;
+
 }
-.p-container {
-    display: flex;
-    gap: 20px;
-    font-size: 17px;
-    color: black;
-    font-family: "Nunito Sans", sans-serif;
+.hidden {
+  display: none;
 }
-.inputTime {
-    
+.timer {
+  text-align: center;
+  margin-top: 150px;
+}
+.timer-display {
+  font-size: 30px;
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin: 20px 20px;
+}
+#reverseTimeInput {
+  padding: 10px 15px;
+  border-radius: 10px;
 }

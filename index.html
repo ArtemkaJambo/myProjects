@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Таймер</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Таймер</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,25 +11,28 @@
 </head>
 <body>
 
-  <header class="header">Timer</header>
-  <div class="app">
-    <div class="buttons-container">
-      <!-- <button id="stopFive">stopFive</button>
-      <button id="fiveMinutes">5 minutes</button> -->
-      <button id="startBtn">Start</button>
-      <button id="stopBtn">Stop</button>
-      <button id="clearBtn">Clear</button>
-      <!-- <button id="tenMinutes">10 minutes</button> -->
+  <header class="text">Timer</header>
+
+  <div id="normalTimer" class="timer-container">
+    <div  class="buttons-container">
+      <button class="btn text" id="startBtn">Start</button>
+      <button class="btn text" id="stopBtn">Stop</button>
+      <button class="btn text" id="clearBtn">Clear</button>
     </div>
-    
-    <div id="timer">00:00:00</div>
-    <div class="p-container">
-      <p>hours</p>
-      <p>minutes</p>
-      <p>seconds</p>
+    <button class="btn text" id="reverseBtn">ReverseTimer</button>
+    <p id="timer">00:00:00</p>
+  </div>
+  
+  <div id="reverseTimer" class="timer hidden">
+    <div id="reverseTimerDisplay" class="timer-display">00:00:00</div>
+    <div class="buttons">
+      <button id="startReverseBtn">Start Reverse</button>
+      <button id="backBtn">Back</button>
     </div>
+    <input type="text" id="reverseTimeInput" placeholder="Введите время (в секундах)">
   </div>
 
-  <script src="index.js"></script>
+
 </body>
+  <script src="index.js"></script>
 </html>

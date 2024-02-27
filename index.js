@@ -6,7 +6,8 @@ let minutes = 0;
 let hours = 0;
 let isTimerRunning = false;
 let activeStartbtn = false;
- 
+let reverseInterval; 
+
 function updateTimer() {
   seconds++
 
@@ -45,55 +46,60 @@ document.getElementById('clearBtn').addEventListener('click',function() {
   document.getElementById('timer').textContent = '00:00:00'  
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ======
-document.getElementById('fiveMinutes').addEventListener('click',function() {
-  function fiveMinutesTimer(timerElement) {
-    let timer = timerElement
-
-    function activeFiveMinutes() {
-      const minutes = Math.floor(timer / 60)
-      const seconds = timer % 60
-
-      document.getElementById('timer').textContent = `${minutes}:${seconds}`
-      
-      const formattedTime = 
-      (hours < 10 ? '0' + hours : hours) + ':' +
-      (minutes < 10 ? '0' + minutes : minutes) + ':' +
-      (seconds < 10 ? '0' + seconds : seconds) 
-      document.getElementById('timer').textContent = formattedTime
-
-      if (--timer < 0) {
-      document.getElementById('timer').textContent = 'timer is over'   
-      } else {
-        setTimeout(activeFiveMinutes, 1000)
+function reverseBtn() {
+    if (seconds > 0 || minutes > 0 || hours > 0) {
+      seconds--;
+  
+      if (seconds < 0) {
+        seconds = 59;
+        minutes--;
+  
+        if (minutes < 0) {
+          minutes = 59;
+          hours--;
+  
+          if (hours < 0) {
+            // Timer finished
+            clearInterval(reverseInterval);
+            document.getElementById('reverseTimerDisplay').textContent = '00:00:00';
+            document.getElementById('reverseTimerDisplay').textContent = 'Time is over';
+            return;
+          }
+        }
       }
+  
+      const formattedTimer = 
+        (hours < 10 ? '0' + hours : hours) + ':' +
+        (minutes < 10 ? '0' + minutes : minutes) + ':' +
+        (seconds < 10 ? '0' + seconds : seconds);
+      document.getElementById('reverseTimerDisplay').textContent = formattedTimer;
+    } else {
+      // Timer finished
+      clearInterval(reverseInterval);
+      document.getElementById('reverseTimerDisplay').textContent = '00:00:00';
+      document.getElementById('reverseTimerDisplay').textContent = 'Time is over';
     }
-    activeFiveMinutes()
-    
+}
+
+document.getElementById('startReverseBtn').addEventListener('click', function() {
+  if (!isTimerRunning && !activeStartbtn) {
+    const inputTime = document.getElementById('reverseTimeInput').value;
+    const timeArray = inputTime.split(':').map(num => parseInt(num, 10));
+    hours = timeArray[0] || 0;
+    minutes = timeArray[1] || 0;
+    seconds = timeArray[2] || 0;
+
+    clearInterval(reverseInterval);
+    reverseInterval = setInterval(reverseBtn, 1000);
+    activeStartbtn = true;
   }
-  fiveMinutesTimer(5 * 60)
+});
+document.getElementById('reverseBtn').addEventListener('click',function() {
+  document.getElementById('normalTimer').classList.add('hidden');
+  document.getElementById('reverseTimer').classList.remove('hidden');
+})
+document.getElementById('backBtn').addEventListener('click',function() {
+  document.getElementById('reverseTimer').classList.add('hidden');
+  document.getElementById('normalTimer').classList.remove('hidden');
 })
 
